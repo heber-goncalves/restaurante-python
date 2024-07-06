@@ -13,7 +13,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         # Titulo e tamanho inicial da janela
-        self.setWindowTitle("Gerenciador de Pedidos do Restaurante")
+        self.setWindowTitle("Gerenciador de Pedidos")
         self.setGeometry(100, 100, 800, 600)
 
         # Cria cardápio e gerenciador
@@ -48,13 +48,11 @@ class MainWindow(QMainWindow):
         botao_entregar.clicked.connect(self.entregar)
         layout.addWidget(botao_entregar)
 
-        botao_quantidade_vendida = QPushButton("Quantidade vendida", self)
-        botao_quantidade_vendida.clicked.connect(self.exibir_quantidade_vendida)
-        layout.addWidget(botao_quantidade_vendida)
-
-        botao_faturamento_total = QPushButton("Faturamento total", self)
-        botao_faturamento_total.clicked.connect(self.exibir_faturamento_total)
-        layout.addWidget(botao_faturamento_total)
+        # Botão para emitir os relatórios
+        botao_relatorios = QPushButton("Emitir relatórios", self)
+        botao_relatorios.clicked.connect(self.exibir_quantidade_vendida)
+        botao_relatorios.clicked.connect(self.exibir_faturamento_total)
+        layout.addWidget(botao_relatorios)
 
         # Cria exibição dos relatórios
         self.label_quantidade_vendida = QLabel("Quantidade vendida de cada produto:", self)
